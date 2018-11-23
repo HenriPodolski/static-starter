@@ -1,4 +1,4 @@
-# Static Starter - Static Website Builder
+# Static Starter - Static Site Builder
 
 A starterkit for generating static websites using a modern Front-End development stack, webpack and I18n support.
 
