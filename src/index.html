@@ -1,0 +1,46 @@
+<!doctype html>
+<% var global = htmlWebpackPlugin.options.data.global %>
+<% var config = htmlWebpackPlugin.options.data.config %>
+<% var locale = htmlWebpackPlugin.options.data.locale %>
+<% var supportedLocales = htmlWebpackPlugin.options.data.supportedLocales %>
+<% var relativeRootPath = htmlWebpackPlugin.options.data.relativeRootPath %>
+<html lang="<%= locale %>">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><%= global.title %></title>
+</head>
+<body>
+  <header>
+    <%- include ./src/partials/controls/language-switch.html %>
+  </header>
+
+  <main>
+  <% if (htmlWebpackPlugin.options.data.page === 'home') { %>
+  <% var data = htmlWebpackPlugin.options.data.content %>
+  <%- include ./src/pages/home.html %>
+  <% } %>
+
+  <% if (htmlWebpackPlugin.options.data.page === 'article') { %>
+  <% var data = htmlWebpackPlugin.options.data.content %>
+  <%- include ./src/pages/article.html %>
+  <% } %>
+  </main>
+
+  <footer></footer>
+
+  <% if (config.debug.index) { %>
+  <script>
+    var debugOutput = {
+      global: JSON.parse('<%- JSON.stringify(global) %>'),
+      config: JSON.parse('<%- JSON.stringify(config) %>'),
+      locale: JSON.parse('<%- JSON.stringify(locale) %>'),
+      supportedLocales: JSON.parse('<%- JSON.stringify(supportedLocales) %>')
+    };
+    console.group('Template debugOutput');
+    console.log(debugOutput);
+    console.groupEnd();
+  </script>
+  <% } %>
+</body>
+</html>

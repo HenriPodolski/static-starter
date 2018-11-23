@@ -1,0 +1,11 @@
+<% if (supportedLocales.length) { %>
+<ul>
+  <% supportedLocales.forEach(function(supportedLocale) { %>
+    <% if (supportedLocale === locale) { %>
+      <li><span><%= supportedLocale %></span></li>
+    <% } else { %>
+  <li><a href="<%= relativeRootPath %><%= supportedLocale %>/index.html"><%= supportedLocale %></a></li>
+    <% } %>
+  <% }) %>
+</ul>
+<% } %>
